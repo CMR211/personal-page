@@ -1,15 +1,34 @@
+import { AnimatePresence } from 'framer-motion'
 import React from 'react'
+import { motion } from 'framer-motion'
+import Navbar from './Navbar.js'
 
 export default function Home (props) {
 
-  const gridStyle = {
+  const topGridStyle = {
     gridColumn: `${Math.round(props.config[0]*0.25)+1} / ${Math.round(props.config[0]*0.75)+1}`,
     gridRow: `${Math.round(props.config[2]*0.2)+1} / ${Math.round(props.config[2]*0.8)+1}`,
   }
 
+  const bottomGridStyle = {
+    gridColumn: topGridStyle.gridColumn,
+    gridRow: `${Math.round(props.config[2]*0.8)+2} / span 1`,
+  }
+
+  const animation = [
+    {scale: 1, opacity: 1},
+    {duration: 3, ease: 'easeInOut'},
+    {scale: 0.9, opacity: 0}
+  ]
+
   return (
-    <>
-      <div className='home' style={gridStyle}>
+    <AnimatePresence>
+      <motion.div 
+      animate={animation[0]}
+      transition={animation[1]}
+      initial={animation[2]}
+        className='home glass' 
+        style={topGridStyle}>
 
         <div className='home__content'>
 
@@ -19,12 +38,15 @@ export default function Home (props) {
           </h1>
 
           <p className='home__subtitle'>
-            {`And I'm an aspiring frontend developer :)`}
+            {`And I'm an aspiring frontend developer `}<span className='font--arial'>{`:)`}</span>
           </p>
 
         </div>
 
-      </div>
-    </>
+      </motion.div>
+
+      <Navbar bottomGridStyle={bottomGridStyle} />
+      
+    </AnimatePresence>
   )
 }

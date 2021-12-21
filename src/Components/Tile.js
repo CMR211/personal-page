@@ -1,4 +1,5 @@
 import React from 'react'
+import {motion} from 'framer-motion'
 
 function getRandomValue(min, max) {
   return Math.floor( Math.random() * (max - min) + min )
@@ -8,23 +9,42 @@ export default function Tile ( {posX, posY, width, height} ) {
 
   const tile = getRandomValue(1, 21)
 
-  const rotation = getRandomValue(0,2) * 180
-  const bg = `assets/pattern-${tile}.svg` 
+  let bg
+  if (Math.random() > 0.01) {bg = `url(assets/pattern-${tile}.svg)`}
+  else {bg = `hsl(0deg 90% 80%)`}
+
+  const animation = {
+    animate: {
+      // rotate: 360, 
+      scale: 1,
+    },
+    transition: {
+      ease: 'easeInOut', 
+      duration: 1, 
+      // delay: 1*(posY)/window.innerWidth,
+      delay: Math.random()*5
+    }
+  }
+
+
 
   const TileElement = () => {return(
-    <div
+    <motion.div
+      layout
+      animate={animation.animate}
+      transition={animation.transition}
       className="tile" 
       style={{ 
-        background: `url(${bg})`,
+        background: bg,
         left: `${posX}px`, 
         top: `${posY}px`, 
         width: `${width}px`, 
         height: `${height}px`, 
         backgroundSize: `${width}px ${height}px`,
         backgroundRepeat: 'no-repeat',
-        transform: `rotate(${rotation}deg)`,
+        scale: 0,
       }}>
-    </div>
+    </motion.div>
   )}
 
   return (
