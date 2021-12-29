@@ -34,12 +34,22 @@ code {
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.5) ;
 }
 
+.navbar__icon {
+  transition: 300ms;
+}
+
+.navbar__icon:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
 .home__content {
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
-  gap: 1rem
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
 }
 
 .home__title {
@@ -51,15 +61,38 @@ code {
   font-family: Arial;
 }
 
-
 .home__subtitle {
+  font-family: 'Bebas Neue', 'helvetica', 'arial', sans-serif;
   font-size: clamp(2rem, 4vw, 4rem);
   text-align: center;
   font-weight: 600;
+  line-height: 150%;
 }
 
 .accent {
   color: var(--accent)
+}
+
+p {
+  font-family: Lato, Helvetica, sans-serif;
+  line-height: 180%;
+  font-weight: 700;
+  font-size: clamp(16px, 4vw, 22px);
+}
+
+.p__justify {
+  text-align: justify;
+}
+
+.detail-with-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-big {
+  font-size: 1.5rem;
 }
 
 .nav {
@@ -71,4 +104,73 @@ code {
 .nav * {
   font-size: 1.5rem;
   text-decoration: none;
+}
+
+.about {
+  padding: clamp(0.5rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  align-items: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.skills__title {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+.skills__container {
+  border-top: 2px solid var(--accent);
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  gap: 1rem;
+}
+
+.skills__subcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills__subcontainer * {
+  transition: 300ms;
+}
+
+.skills__subcontainer:hover * {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.skills__icon {
+  font-size: 2rem;
+}
+
+.skills__caption {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 1000px) {
+  .skills__container {
+    gap: clamp(2rem, 3vw, 4rem)
+  }
+  .skills__icon {
+    font-size: clamp(2rem, 3vw, 4rem)
+  }
 }
