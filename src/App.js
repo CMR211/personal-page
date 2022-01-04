@@ -3,6 +3,7 @@ import Background from './Components/Background.js'
 import Home from './Components/Home.js'
 import About from './Components/About.js'
 import Portfolio from './Components/Portfolio.js'
+import Contact from './Components/Contact.js'
 import Grid from './Components/Grid.js'
 import Navbar from './Components/Navbar.js'
 import styles from './App.css'
@@ -55,6 +56,10 @@ function App() {
 
               <Route key='portfolio' path="/portfolio" element={
                 <Portfolio config={config} dimensions={dimensions} />
+              } />
+
+              <Route key='contact' path="/contact" element={
+                <Contact config={config} dimensions={dimensions} />
               } />
             
           </Routes>

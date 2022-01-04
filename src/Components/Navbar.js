@@ -4,9 +4,6 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function Navbar ( {config} ) {
 
-  console.log(config[0])
-
-
   const bottomGridStyle = {
     gridColumn: `${Math.round(config[0]*0.25)+1} / ${Math.round(config[0]*0.75)+1}`,
     gridRow: `${Math.round(config[2]*0.8)+2} / span 1`,
@@ -28,6 +25,10 @@ export default function Navbar ( {config} ) {
 
         <Link to="/portfolio">
           <i class="navbar__icon fas fa-shapes"></i>
+        </Link>
+
+        <Link to="/contact">
+          <i class="navbar__icon fas fa-envelope-open"></i>
         </Link>
 {/* 
         <Link to="/">
