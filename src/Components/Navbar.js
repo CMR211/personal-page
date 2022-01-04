@@ -16,19 +16,19 @@ export default function Navbar ( {config} ) {
       >
 
         <Link to="/">
-          <i class="navbar__icon fas fa-home"></i>
+          <i className="navbar__icon fas fa-home"></i>
         </Link>
 
         <Link to="/about">
-          <i class="navbar__icon fas fa-feather-alt"></i>
+          <i className="navbar__icon fas fa-feather-alt"></i>
         </Link>
 
         <Link to="/portfolio">
-          <i class="navbar__icon fas fa-shapes"></i>
+          <i className="navbar__icon fas fa-shapes"></i>
         </Link>
 
         <Link to="/contact">
-          <i class="navbar__icon fas fa-envelope-open"></i>
+          <i className="navbar__icon fas fa-envelope-open"></i>
         </Link>
 {/* 
         <Link to="/">

@@ -42,7 +42,7 @@ function App() {
       <Background />
       <Grid config={config}>
         <AnimatePresence>
-        <BrowserRouter>
+        <BrowserRouter key={window.location.pathname}>
           
           <Routes>
             

@@ -1,6 +1,7 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
+import { portfolioAnimation } from '../Animations/portfolioAnimation.js'
 
 export default function Portfolio (props) {
 
@@ -10,6 +11,8 @@ export default function Portfolio (props) {
   }
 
   const [currentProject, setCurrentProject] = React.useState(0)
+
+  const [popup, setPopup] = React.useState(false)
 
   function changeProject (direction) {
     if (direction === 'left') {
@@ -39,7 +42,26 @@ export default function Portfolio (props) {
     }
   ]
 
+  function toggleFullScreen() {
+    setPopup(!popup)
+  }
+
   return (
+    <>
+      <AnimatePresence>
+        {popup && <motion.div 
+          key='popup'
+          animate={{opacity: 1}}
+          transition={{duration: 0.3}}
+          initial={{opacity: 0.5}}
+          exit={{opacity: 0.5}} 
+          id='popup' 
+          className='popup' 
+          onClick={() => toggleFullScreen()}>
+          <img src={projects[currentProject].pic}></img>
+        </motion.div>}
+      </AnimatePresence>
+
       <motion.div 
         key='portfolio-div'
         animate={animation[0]}
@@ -48,7 +70,7 @@ export default function Portfolio (props) {
         exit={animation[3]}
         className='portfolio glass'  
         style={topGridStyle}>
-
+        
         <h1 className='portfolio__title'>My portfolio</h1>
 
         <div className='portfolio__nav-btns'>
@@ -59,14 +81,22 @@ export default function Portfolio (props) {
           </div>
           <h2 className='project__title'>{projects[currentProject].name}</h2>
         </div> 
-
-        <div className='portfolio__project'>
-          <div className='project__info'>
-            <p className='project__desc'>{projects[currentProject].desc}</p>
-            <a className='project__link' href={projects[currentProject].live}>{`> Live site preview at netlify <`}</a>
-          </div>
-          <img className='project__pic' src={projects[currentProject].pic}></img>
-        </div>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div 
+          animate={portfolioAnimation[0]}
+          transition={portfolioAnimation[1]}
+          initial={portfolioAnimation[2]}
+          exit={portfolioAnimation[3]} 
+          className='portfolio__project' 
+          key={currentProject}>
+            <div className='project__info'>
+              <p className='project__desc'>{projects[currentProject].desc}</p>
+              <a className='project__link'href={projects[currentProject].live}>{`> Live site preview at netlify <`}</a>
+            </div>
+            <img id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic}></img>
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
+    </>
   )
 }

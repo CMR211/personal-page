@@ -40,20 +40,20 @@ export default function About (props) {
           Hi I'm <span className='accent'>Bartek.</span>
         </p>
         <p className='p__justify'>
-          I've started learning web development just a few months ago. 
+          I've started learning web development in October 2021. 
         </p>
         <p className='p__justify'>
-          <span className='accent'>Self-learning</span> my way through basics of html, css and javascript in October 2021 just to take my next steps in React environment.
+          I've been <span className='accent'>self-learning</span> all the time, studying basics of html, css, javascript, finally jumping to React environment, which I'm really enjoying so far. It wasn't that easy while being employed full-time but I think I'm starting to see webdev at least as a familiar ground. My plan is to educate myself further, typescript and redux are my next goals.
         </p>
         <p className='p__justify'>
           Right now I'm looking forward to my first frontend developer job opportunity.
         </p>
         <div className='detail-with-icon'>
-          <i class="fas fa-graduation-cap icon-big"></i>
+          <i className="fas fa-graduation-cap icon-big"></i>
           <p className='p__with-icon'> MSc in Civil Engineering, Road design</p>
         </div>
         <div className='detail-with-icon'>
-          <i class="fas fa-list-alt icon-big"></i>
+          <i className="fas fa-list-alt icon-big"></i>
           <p className='p__with-icon'> 29, male, currently living in Wrocław</p>
         </div>
 

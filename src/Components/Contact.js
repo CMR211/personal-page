@@ -32,9 +32,9 @@ export default function Contact (props) {
     }
   ]
 
-  const mappedContactItems = contactitems.map((item) => { 
+  const mappedContactItems = contactitems.map((item, index) => { 
     return (
-      <div className='contact__item'>
+      <div className='contact__item' key={index}>
         <i className={`${item.icon} contact__icon`}></i>
         <a className='contact__link' href={item.link}>{item.name}</a>
       </div>

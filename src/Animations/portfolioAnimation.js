@@ -1,24 +1,22 @@
-export const animation = [
+export const portfolioAnimation = [
 
   { // active state
-    y: 0, 
-    // scale: 1, 
     opacity: 1,
+    y: 0,
   }, 
 
   { // transition settings
-    duration: 0.5, 
+    duration: 0.3, 
     ease: 'easeInOut',
   }, 
 
   { // initial state 
-    y: -20, 
-    // scale: 0.9, 
     opacity: 0,
+    y: -20,
   }, 
-  { // exit (not-working)
-    scale: 0.9, 
-    y: -100,
+  { // exit
+
     opacity: 0,
+    y: 20,
   } 
 ]
