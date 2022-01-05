@@ -10,15 +10,15 @@ import styles from './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
-function App() {
+function App() {  
 
-  const a = styles
-
+  // hook to get get current window dimensions
   const [dimensions, setDimensions] = React.useState({ 
     height: window.innerHeight,
     width: window.innerWidth
   })
 
+  // resize handler to regenerate background tiles
   React.useEffect(() => {
     function handleResize() {
       setDimensions({
