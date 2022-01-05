@@ -3,8 +3,38 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
 import { portfolioAnimation } from '../Animations/portfolioAnimation.js'
 import getGridPosition from '../Functions/getGridPosition.js'
+import { useNavigate } from 'react-router'
 
 export default function Portfolio (props) {
+
+  // useNavigate hook form react-router to allow navigating with swipes
+  const navigate = useNavigate()
+
+  // touch hook to allow navigating the site with swipes
+  const [touchPosX, setTouchPosX] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDownX = event.touches[0].clientX
+    setTouchPosX(touchDownX)
+  }
+
+  function handleTouchMove (event) {
+    const touchDownX = touchPosX
+    if (touchDownX === null) return
+    const currentTouchX = event.touches[0].clientX
+    const diffX = touchDownX - currentTouchX
+    if (diffX > 5) next()
+    if (diffX < -5) prev()
+    setTouchPosX(null)
+  }
+
+  function next() {
+    navigate('/contact')
+  }
+
+  function prev() {
+    navigate('/about')
+  }
 
   const topGridStyle = {
     gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
@@ -70,7 +100,9 @@ export default function Portfolio (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='portfolio glass'  
-        style={topGridStyle}>
+        style={topGridStyle}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}>
         
         <h1 className='portfolio__title'>My portfolio</h1>
 

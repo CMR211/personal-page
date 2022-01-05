@@ -6,6 +6,18 @@
   --accent: hsl(0deg 90% 70%);
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+a:focus,a:visited,a:active{
+  outline: none;
+}
+
 body {
   margin: 0;
   font-family: 'Bebas Neue', 'helvetica', 'arial', sans-serif;
@@ -38,7 +50,8 @@ code {
   transition: 300ms;
 }
 
-.navbar__icon:hover {
+.navbar__icon:hover,
+.navbar__icon:focus {
   color: var(--accent);
   transform: scale(1.1);
 }
@@ -118,7 +131,7 @@ p {
 }
 
 .about {
-  padding: clamp(0.5rem, 2vw, 2rem);
+  padding: clamp(0.5rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -279,6 +292,10 @@ h3 {
   flex-direction: column;
   justify-content: space-around;
   flex-basis: auto;
+}
+
+.project__title {
+  text-align: center;
 }
 
 .project__info {

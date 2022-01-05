@@ -23,7 +23,10 @@ export default function Tile ( {posX, posY, width, height} ) {
       ease: 'easeInOut', 
       duration: 1, 
       // delay: 1*(posY)/window.innerWidth,
-      delay: Math.random()*5
+      delay: Math.random()*10,
+      repeat: Infinity,
+      repeatType: 'mirror',
+      repeatDelay: getRandomValue(10, 60)
     }
   }
 

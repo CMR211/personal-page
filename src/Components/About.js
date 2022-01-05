@@ -2,8 +2,38 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
 import getGridPosition from '../Functions/getGridPosition.js'
+import { useNavigate } from 'react-router'
 
 export default function About (props) {
+
+  // useNavigate hook form react-router to allow navigating with swipes
+  const navigate = useNavigate()
+
+  // touch hook to allow navigating the site with swipes
+  const [touchPosX, setTouchPosX] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDownX = event.touches[0].clientX
+    setTouchPosX(touchDownX)
+  }
+
+  function handleTouchMove (event) {
+    const touchDownX = touchPosX
+    if (touchDownX === null) return
+    const currentTouchX = event.touches[0].clientX
+    const diffX = touchDownX - currentTouchX
+    if (diffX > 5) next()
+    if (diffX < -5) prev()
+    setTouchPosX(null)
+  }
+
+  function next() {
+    navigate('/portfolio')
+  }
+
+  function prev() {
+    navigate('/')
+  }
 
   const topGridStyle = {
     gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
@@ -43,26 +73,28 @@ export default function About (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='about glass'  
-        style={topGridStyle}>
+        style={topGridStyle}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}>
         <p className='p__justify'>
           Hi I'm <span className='accent'>Bartek.</span>
         </p>
         <p className='p__justify'>
-          I've started learning web development about {getTimeSinceStart()} months ago. 
+          Since I've always loved designing stuff and layouts I've decided to learn web development from scratch about {getTimeSinceStart()} months ago. 
         </p>
         <p className='p__justify'>
-          I've been <span className='accent'>self-learning</span> all the time, studying basics of html, css, javascript, finally jumping to React environment, which I'm really enjoying so far. It wasn't that easy while being employed full-time but I think I'm starting to see webdev at least as a familiar ground. {(window.innerWidth < 400) ? '' : 'My plan is to educate myself further, typescript and redux are my next goals.'}
+          I've <span className='accent'>self-learned</span> the basics and started some projects as soon as I could. Throughout my learing I've fallen in love with react and decided to stick with it.
         </p>
         <p className='p__justify'>
           Right now I'm looking forward to my first frontend developer job opportunity.
         </p>
         <div className='detail-with-icon'>
           <i className="fas fa-graduation-cap icon-big"></i>
-          <p className='p__with-icon'> MSc in Civil Engineering, Road design</p>
+          <p className='p__with-icon'>MSc in Civil Engineering (Roads designing), Wroclaw University of Science and Technology</p>
         </div>
         <div className='detail-with-icon'>
           <i className="fas fa-list-alt icon-big"></i>
-          <p className='p__with-icon'> 29, male, currently living in Wrocław</p>
+          <p className='p__with-icon'>I'm 29, currently living in Wrocław</p>
         </div>
 
         <div className='flex-column flex-center'>

@@ -2,9 +2,39 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
 import getGridPosition from '../Functions/getGridPosition.js'
+import { useNavigate } from 'react-router'
 
 
 export default function Contact (props) {
+
+  // useNavigate hook form react-router to allow navigating with swipes
+  const navigate = useNavigate()
+
+  // touch hook to allow navigating the site with swipes
+  const [touchPosX, setTouchPosX] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDownX = event.touches[0].clientX
+    setTouchPosX(touchDownX)
+  }
+
+  function handleTouchMove (event) {
+    const touchDownX = touchPosX
+    if (touchDownX === null) return
+    const currentTouchX = event.touches[0].clientX
+    const diffX = touchDownX - currentTouchX
+    if (diffX > 5) next()
+    if (diffX < -5) prev()
+    setTouchPosX(null)
+  }
+
+  function next() {
+    navigate('/')
+  }
+
+  function prev() {
+    navigate('/portfolio')
+  }
 
   const topGridStyle = {
     gridColumn: `${getGridPosition(props.config, 'small', 'colStart')} / ${getGridPosition(props.config, 'small', 'colEnd')}`,
@@ -51,7 +81,9 @@ export default function Contact (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='contact glass'  
-        style={topGridStyle}>
+        style={topGridStyle}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}>
 
           <h1 className='contact__title'>Contact</h1>
 

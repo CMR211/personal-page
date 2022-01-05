@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function Navbar ( {config} ) {
 
@@ -20,19 +21,19 @@ export default function Navbar ( {config} ) {
       >
 
         <Link to="/">
-          <i className="navbar__icon fas fa-home"></i>
+          <motion.i whileTap={{scale: 0.1}} transition={{duration: 0.1, ease: 'easeInOut'}} className="navbar__icon fas fa-home"></motion.i>
         </Link>
 
         <Link to="/about">
-          <i className="navbar__icon fas fa-feather-alt"></i>
+          <motion.i whileTap={{scale: 0.1}} transition={{duration: 0.1, ease: 'easeInOut'}}  className="navbar__icon fas fa-feather-alt"></motion.i>
         </Link>
 
         <Link to="/portfolio">
-          <i className="navbar__icon fas fa-shapes"></i>
+          <motion.i whileTap={{scale: 0.1}} transition={{duration: 0.1, ease: 'easeInOut'}}  className="navbar__icon fas fa-shapes"></motion.i>
         </Link>
 
         <Link to="/contact">
-          <i className="navbar__icon fas fa-envelope-open"></i>
+          <motion.i whileTap={{scale: 0.1}} transition={{duration: 0.1, ease: 'easeInOut'}}  className="navbar__icon fas fa-envelope-open"></motion.i>
         </Link>
 {/* 
         <Link to="/">

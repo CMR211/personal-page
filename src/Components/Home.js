@@ -16,37 +16,29 @@ export default function Home (props) {
 
   // touch hook to allow navigating the site with swipes
   const [touchPosX, setTouchPosX] = React.useState(null)
-  const [touchPosY, setTouchPosY] = React.useState(null)
 
   function handleTouchStart (event) {
     const touchDownX = event.touches[0].clientX
-    const touchDownY = event.touches[0].clientY
     setTouchPosX(touchDownX)
-    setTouchPosY(touchDownY)
   }
 
   function handleTouchMove (event) {
     const touchDownX = touchPosX
-    const touchDownY = touchPosY
-    if (touchDownX === null && touchDownY === null) return
+    if (touchDownX === null) return
     const currentTouchX = event.touches[0].clientX
-    const currentTouchY = event.touches[0].clientY
     const diffX = touchDownX - currentTouchX
-    const diffY = touchDownY - currentTouchY
-    if (diffX > 20) next()
-    if (diffX < -20) prev()
-    if (diffY > 20) next()
-    if (diffY < -20) prev()
+    if (diffX > 5) next()
+    if (diffX < -5) prev()
     setTouchPosX(null)
-    setTouchPosY(null)
   }
 
   function next() {
     navigate('/about')
-    console.log('swiped next')
   }
 
-  function prev() {}
+  function prev() {
+    navigate('/contact')
+  }
 
   return (
     <motion.div 
