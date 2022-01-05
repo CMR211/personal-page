@@ -59,7 +59,7 @@ export default function Portfolio (props) {
           id='popup' 
           className='popup' 
           onClick={() => toggleFullScreen()}>
-          <img src={projects[currentProject].pic}></img>
+          <img alt={projects[currentProject].name} src={projects[currentProject].pic}></img>
         </motion.div>}
       </AnimatePresence>
 
@@ -94,7 +94,7 @@ export default function Portfolio (props) {
               <p className='project__desc'>{projects[currentProject].desc}</p>
               <a className='project__link'href={projects[currentProject].live}>{`Live site preview at netlify`}</a>
             </div>
-            <img id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic}></img>
+            <img id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic} alt={projects[currentProject].name} ></img>
           </motion.div>
         </AnimatePresence>
       </motion.div>

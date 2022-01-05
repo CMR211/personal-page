@@ -1,5 +1,5 @@
 import React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
 import getGridPosition from '../Functions/getGridPosition.js'
 

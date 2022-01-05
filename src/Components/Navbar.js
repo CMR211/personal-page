@@ -1,6 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Navbar ( {config} ) {
 
