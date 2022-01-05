@@ -4,8 +4,13 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function Navbar ( {config} ) {
 
+  const gridCol = [
+    (window.innerWidth > 350) ? (Math.round(config[0]*0.25)+1) : 2,
+    (window.innerWidth > 350) ? (Math.round(config[0]*0.75)+1) : config[0]
+  ]
+
   const bottomGridStyle = {
-    gridColumn: `${Math.round(config[0]*0.25)+1} / ${Math.round(config[0]*0.75)+1}`,
+    gridColumn: `${gridCol[0]} / ${gridCol[1]}`,
     gridRow: `${Math.round(config[2]*0.8)+2} / span 1`,
   }
 

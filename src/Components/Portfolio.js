@@ -2,12 +2,13 @@ import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
 import { portfolioAnimation } from '../Animations/portfolioAnimation.js'
+import getGridPosition from '../Functions/getGridPosition.js'
 
 export default function Portfolio (props) {
 
   const topGridStyle = {
-    gridColumn: `${Math.round(props.config[0]*0.15)+1} / ${Math.round(props.config[0]*0.85)+1}`,
-    gridRow: `${Math.round(props.config[2]*0.1)+1} / ${Math.round(props.config[2]*0.8)+1}`,
+    gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
+    gridRow: `${getGridPosition(props.config, 'big', 'rowStart')} / ${getGridPosition(props.config, 'big', 'rowEnd')}`,
   }
 
   const [currentProject, setCurrentProject] = React.useState(0)
@@ -91,7 +92,7 @@ export default function Portfolio (props) {
           key={currentProject}>
             <div className='project__info'>
               <p className='project__desc'>{projects[currentProject].desc}</p>
-              <a className='project__link'href={projects[currentProject].live}>{`> Live site preview at netlify <`}</a>
+              <a className='project__link'href={projects[currentProject].live}>{`Live site preview at netlify`}</a>
             </div>
             <img id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic}></img>
           </motion.div>

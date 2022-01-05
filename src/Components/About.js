@@ -1,12 +1,13 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
+import getGridPosition from '../Functions/getGridPosition.js'
 
 export default function About (props) {
 
   const topGridStyle = {
-    gridColumn: `${Math.round(props.config[0]*0.15)+1} / ${Math.round(props.config[0]*0.85)+1}`,
-    gridRow: `${Math.round(props.config[2]*0.1)+1} / ${Math.round(props.config[2]*0.8)+1}`,
+    gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
+    gridRow: `${getGridPosition(props.config, 'big', 'rowStart')} / ${getGridPosition(props.config, 'big', 'rowEnd')}`,
   }
 
   const skillsArray = [
@@ -27,6 +28,13 @@ export default function About (props) {
     )
   })
 
+  function getTimeSinceStart() {
+    const currentTime = new Date()
+    const startTime = new Date('october 2021')
+    const timeDiff = Math.round( (currentTime - startTime) / 1000 / 3600 / 24 / 31 )
+    return timeDiff
+  }
+
   return (
       <motion.div 
         key='about-div'
@@ -40,10 +48,10 @@ export default function About (props) {
           Hi I'm <span className='accent'>Bartek.</span>
         </p>
         <p className='p__justify'>
-          I've started learning web development in October 2021. 
+          I've started learning web development about {getTimeSinceStart()} months ago. 
         </p>
         <p className='p__justify'>
-          I've been <span className='accent'>self-learning</span> all the time, studying basics of html, css, javascript, finally jumping to React environment, which I'm really enjoying so far. It wasn't that easy while being employed full-time but I think I'm starting to see webdev at least as a familiar ground. My plan is to educate myself further, typescript and redux are my next goals.
+          I've been <span className='accent'>self-learning</span> all the time, studying basics of html, css, javascript, finally jumping to React environment, which I'm really enjoying so far. It wasn't that easy while being employed full-time but I think I'm starting to see webdev at least as a familiar ground. {(window.innerWidth < 400) ? '' : 'My plan is to educate myself further, typescript and redux are my next goals.'}
         </p>
         <p className='p__justify'>
           Right now I'm looking forward to my first frontend developer job opportunity.

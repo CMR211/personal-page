@@ -12,6 +12,7 @@ export default function Tile ( {posX, posY, width, height} ) {
   let bg
   if (Math.random() > 0.01) {bg = `url(assets/pattern-${tile}.svg)`}
   else {bg = `hsl(0deg 90% 80%)`}
+  
 
   const animation = {
     animate: {

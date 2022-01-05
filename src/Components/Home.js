@@ -2,12 +2,13 @@ import { AnimatePresence } from 'framer-motion'
 import React from 'react'
 import { motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
+import getGridPosition from '../Functions/getGridPosition.js'
 
 export default function Home (props) {
 
   const topGridStyle = {
-    gridColumn: `${Math.round(props.config[0]*0.25)+1} / ${Math.round(props.config[0]*0.75)+1}`,
-    gridRow: `${Math.round(props.config[2]*0.2)+1} / ${Math.round(props.config[2]*0.8)+1}`,
+    gridColumn: `${getGridPosition(props.config, 'small', 'colStart')} / ${getGridPosition(props.config, 'small', 'colEnd')}`,
+    gridRow: `${getGridPosition(props.config, 'small', 'rowStart')} / ${getGridPosition(props.config, 'small', 'rowEnd')}`,
   }
 
   return (
