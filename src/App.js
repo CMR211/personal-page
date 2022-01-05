@@ -7,10 +7,12 @@ import Contact from './Components/Contact.js'
 import Grid from './Components/Grid.js'
 import Navbar from './Components/Navbar.js'
 import styles from './App.css'
-import { BrowserRouter, Routes, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
 function App() {
+
+  const a = styles
 
   const [dimensions, setDimensions] = React.useState({ 
     height: window.innerHeight,
