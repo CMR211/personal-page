@@ -80,21 +80,16 @@ export default function About (props) {
           Hi I'm <span className='accent'>Bartek.</span>
         </p>
         <p className='p__justify'>
-          Since I've always loved designing stuff and layouts I've decided to learn web development from scratch about {getTimeSinceStart()} months ago. 
+          Since I'd always loved designing stuff and layouts I've decided to begin learning web development from scratch about {getTimeSinceStart()} months ago. I've fallen in love with React and right now I'm looking forward to my first job opportunity as a frontend dev.
         </p>
-        <p className='p__justify'>
-          I've <span className='accent'>self-learned</span> the basics and started some projects as soon as I could. Throughout my learing I've fallen in love with react and decided to stick with it.
-        </p>
-        <p className='p__justify'>
-          Right now I'm looking forward to my first frontend developer job opportunity.
-        </p>
+        
         <div className='detail-with-icon'>
           <i className="fas fa-graduation-cap icon-big"></i>
-          <p className='p__with-icon'>MSc in Civil Engineering (Roads designing), Wroclaw University of Science and Technology</p>
+          <p className='p__with-icon'>MSc in Civil Engineering (Roads designing)<br /><span className='smaller'>Wroclaw University of Science and Technology</span></p>
         </div>
         <div className='detail-with-icon'>
           <i className="fas fa-list-alt icon-big"></i>
-          <p className='p__with-icon'>I'm 29, currently living in Wrocław</p>
+          <p className='p__with-icon'>I'm 29, currently living in Wroclaw</p>
         </div>
 
         <div className='flex-column flex-center'>

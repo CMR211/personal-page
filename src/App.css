@@ -93,6 +93,13 @@ code {
   }
 }
 
+@media (max-height: 600px) {
+  .home__subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
+
 .accent {
   color: var(--accent)
 }
@@ -137,16 +144,21 @@ p {
   justify-content: space-around;
 }
 
+.about .smaller {
+  font-size: smaller;
+}
+
 .about p {
   font-size: clamp(0.9rem, 1.7vw, 1.3rem);
   margin-bottom: 0.3rem;
 }
 
-@media (max-width: 400px) {
+
+@media (max-height: 600px), (max-width: 400px) {
   .about p {
-    font-family: arial, helvetica, sans-serif;
-    line-height: 110%;
-    font-weight: 500;
+    line-height: 130%;
+    font-size: small;
+    /* font-weight: 500; */
   }
 }
 
@@ -225,6 +237,8 @@ h3 {
   }
   .skills__caption {
     display: inline;
+    text-align: center;
+    line-height: 120%;
   }
 }
 
@@ -239,14 +253,6 @@ h3 {
 
 .portfolio p {
   font-size: clamp(1rem, 2vw, 1.3rem);
-}
-
-@media (max-width: 400px) {
-  .portfolio p {
-    font-family: arial, helvetica, sans-serif;
-    line-height: 110%;
-    font-weight: 500;
-  }
 }
 
 .portfolio__title {
@@ -355,6 +361,29 @@ h3 {
 .fullscreen {
   display: block;
   z-index: 2;
+}
+
+@media (max-width: 400px) {
+  .portfolio p {
+    font-family: arial, helvetica, sans-serif;
+    line-height: 110%;
+    font-weight: 500;
+  }
+}
+
+@media (max-height: 600px) {
+  .portfolio p {
+    font-family: arial, helvetica, sans-serif;
+    line-height: 110%;
+    font-weight: 500;
+    font-size: smaller;
+  }
+  .portfolio__title {
+    font-size: 2rem;
+  }
+  .project__title {
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1000px) {
