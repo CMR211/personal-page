@@ -4,9 +4,10 @@ import Home from './Components/Home.js'
 import About from './Components/About.js'
 import Portfolio from './Components/Portfolio.js'
 import Contact from './Components/Contact.js'
+import PagesWrapper from './Components/PagesWrapper.js'
 import Grid from './Components/Grid.js'
 import Navbar from './Components/Navbar.js'
-import styles from './App.css'
+import styles from './Styles/Styles.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
@@ -41,36 +42,8 @@ function App() {
 
   return (
     <>
-      <Background />
-      <Grid config={config}>
-        <AnimatePresence>
-        <BrowserRouter key={window.location.pathname}>
-          
-          <Routes>
-            
-              <Route key='home' path="/" element={
-                <Home config={config} dimensions={dimensions} />
-              } />
-
-              <Route key='about' path="/about" element={
-                <About config={config} dimensions={dimensions} />
-              } />
-
-              <Route key='portfolio' path="/portfolio" element={
-                <Portfolio config={config} dimensions={dimensions} />
-              } />
-
-              <Route key='contact' path="/contact" element={
-                <Contact config={config} dimensions={dimensions} />
-              } />
-            
-          </Routes>
-
-          <Navbar config={config} />
-
-        </BrowserRouter>
-        </AnimatePresence>
-      </Grid>
+      <Background key={'background'} />
+      <PagesWrapper config={config} dimensions={dimensions} />
     </>
   );
 }

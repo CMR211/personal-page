@@ -17,10 +17,10 @@ export default function Background () {
       })
     }
     window.addEventListener('resize', handleResize)
-  })
+  }, [])
   
   function getTileDimensions() {
-    const horizontalTiles = Math.round(dimensions.width / 50)
+    const horizontalTiles = (Math.round(dimensions.width / 50) % 2 === 0) ? (Math.round(dimensions.width / 50) + 1) : (Math.round(dimensions.width / 50))
     const horizontalTileDim = Math.floor( dimensions.width / horizontalTiles * 100) / 100
     const verticalTiles = Math.round(dimensions.height / 50)
     const verticalTileDim = Math.floor( dimensions.height / verticalTiles * 100 ) / 100
@@ -49,8 +49,8 @@ export default function Background () {
   }
 
   return (
-    <React.Fragment>
+    <div id='background-tiles'>
       {placeBackground()}
-    </React.Fragment>
+    </div>
   )
 }

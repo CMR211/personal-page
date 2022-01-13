@@ -1,0 +1,153 @@
+@import 'variables';
+
+.portfolio {
+  max-width: 50rem;
+  padding: 1rem;
+
+  & p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__nav-btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 10px;
+    gap: 10px;
+
+    & div * {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      transition: 300ms;
+      border: none;
+      background: transparent;
+    }
+
+    & div {
+      display: flex;
+      gap: 2rem;
+    }
+
+    & i:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+}
+
+.project__title {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--accent);
+  width: 100%;
+}
+
+.portfolio__project {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+  .project-item-bg {
+    background-color: rgba(100, 100, 100, 0.1);
+    border-radius: 0.3rem;
+  }
+
+  .project__info {
+    width: 100%;
+  }
+
+  .project__desc {
+    @extend .project-item-bg;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .project__link {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    transition: 300ms;
+    @extend .project-item-bg;
+    & i {
+      transition: 300ms;
+    }
+    
+    &:hover,
+    &:focus {
+      color: var(--accent);
+      background-color: rgba(100, 100, 100, 0.2);
+      & i {
+        color: var(--accent);
+      }
+    }
+  }
+  
+  .project__pic {
+    width: 500px;
+    max-width: 100%;
+    align-self: center;
+    object-fit: cover;
+    box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.4);
+    transition: 500ms ease-in-out;
+    border-radius: 0.3rem;
+
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .portfolio__project {
+    flex-direction: row;
+  }
+}
+
+.popup {
+  inset: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(100, 100, 100, 0.8);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & img {
+    width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+}
+
+.fullscreen {
+  display: block;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .portfolio__title {
+    font-size: 1.1rem;
+  }
+  .project__title {
+    font-size: 1rem;
+  }
+}
+
+

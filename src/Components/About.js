@@ -1,13 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { animation } from '../Animations/divAnimation.js'
-import getGridPosition from '../Functions/getGridPosition.js'
-import { useNavigate } from 'react-router'
 
 export default function About (props) {
-
-  // useNavigate hook form react-router to allow navigating with swipes
-  const navigate = useNavigate()
 
   // touch hook to allow navigating the site with swipes
   const [touchPosX, setTouchPosX] = React.useState(null)
@@ -28,16 +23,11 @@ export default function About (props) {
   }
 
   function next() {
-    navigate('/portfolio')
+    props.changeCurrentPage(2)
   }
 
   function prev() {
-    navigate('/')
-  }
-
-  const topGridStyle = {
-    gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
-    gridRow: `${getGridPosition(props.config, 'big', 'rowStart')} / ${getGridPosition(props.config, 'big', 'rowEnd')}`,
+    props.changeCurrentPage(0)
   }
 
   const skillsArray = [
@@ -51,9 +41,9 @@ export default function About (props) {
 
   const mappedSkills = skillsArray.map( (item, index) => {
     return (
-      <div className='skills__subcontainer' key={`skill-${index}`}>
-        <i className={`${item[1]} skills__icon`}></i>
-        <p className='skills__caption'>{item[0]}</p>
+      <div className='about__skills__subcontainer' key={`skill-${index}`}>
+        <i className={`${item[1]} about__skills__icon`}></i>
+        <p className='about__skills__caption'>{item[0]}</p>
       </div>
     )
   })
@@ -73,30 +63,29 @@ export default function About (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='about glass'  
-        style={topGridStyle}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}>
-        <p className='p__justify'>
-          Hi I'm <span className='accent'>Bartek.</span>
-        </p>
-        <p className='p__justify'>
+
+        <h1 className='about__title'>About me</h1>
+        <p className='about__text'>
           Since I'd always loved designing stuff and layouts I've decided to begin learning web development from scratch about {getTimeSinceStart()} months ago. I've fallen in love with React and right now I'm looking forward to my first job opportunity as a frontend dev.
         </p>
         
-        <div className='detail-with-icon'>
-          <i className="fas fa-graduation-cap icon-big"></i>
-          <p className='p__with-icon'>MSc in Civil Engineering (Roads designing)<br /><span className='smaller'>Wroclaw University of Science and Technology</span></p>
+        <div className='about__detail'>
+          <i className="fas fa-graduation-cap about__detail__icon"></i>
+          <p className='about__detail__text'>MSc in Civil Engineering (Roads designing)<br /><span className='smaller'>Wroclaw University of Science and Technology</span></p>
         </div>
-        <div className='detail-with-icon'>
-          <i className="fas fa-list-alt icon-big"></i>
-          <p className='p__with-icon'>I'm 29, currently living in Wroclaw</p>
+        
+        <div className='about__detail about__education'>
+          <i className="fas fa-list-alt about__detail__icon"></i>
+          <p className='about__detail__text'>I'm 29, currently living in Wroclaw</p>
         </div>
 
-        <div className='flex-column flex-center'>
-          <h3 className='skills__title'>Tools</h3>
-          <div className='flex-row skills__container'>
-            {mappedSkills}
-          </div>
+          <div className='about__skills'>
+            <h3 className='about__skills__title'>Tools</h3>
+            <div className='about__skills__container'>
+              {mappedSkills}
+            </div>
         </div>
       </motion.div>
   )

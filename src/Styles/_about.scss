@@ -1,0 +1,94 @@
+@mixin about-font-size {
+  font-size: clamp(0.8rem, 1vw, 1rem)
+}
+
+.about {
+  max-height: 75vh;
+  max-width: 50rem;
+  padding: 2rem;
+}
+
+.about__text {
+  @include about-font-size();
+  margin: 1rem 0;
+}
+
+.about__detail {
+  @include about-font-size();
+  max-width: 30rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+
+  &__icon {
+    margin-left: 1rem;
+    display: block;
+    width: 30px;
+    font-size: 20px;
+  }
+}
+
+@media (max-height: 610px) {
+  .about__education {display: none;}
+}
+
+.about__skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__skills__title {
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+  text-align: center;
+}
+
+.about__skills__container {
+  border-top: 2px solid var(--accent);
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.about__skills__subcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__skills__subcontainer * {
+  transition: 300ms;
+}
+
+.about__skills__subcontainer:hover * {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.about__skills__icon {
+  font-size: 2rem;
+}
+
+.about__skills__caption {
+  font-size: 0.9rem;
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .about__skills__container {
+    gap: clamp(2rem, 3vw, 4rem)
+  }
+  .about__skills__icon {
+    font-size: clamp(2rem, 3vw, 4rem)
+  }
+  .about__skills__caption {
+    display: inline;
+    text-align: center;
+    line-height: 120%;
+  }
+}

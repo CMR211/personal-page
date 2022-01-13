@@ -16,13 +16,12 @@ export default function Tile ( {posX, posY, width, height} ) {
 
   const animation = {
     animate: {
-      // rotate: 360, 
+      opacity: 1,
       scale: 1,
     },
     transition: {
       ease: 'easeInOut', 
       duration: 1, 
-      // delay: 1*(posY)/window.innerWidth,
       delay: Math.random()*10,
       repeat: Infinity,
       repeatType: 'mirror',
@@ -34,7 +33,7 @@ export default function Tile ( {posX, posY, width, height} ) {
 
   const TileElement = () => {return(
     <motion.div
-      layout
+      // layout
       animate={animation.animate}
       transition={animation.transition}
       className="tile" 
@@ -46,7 +45,8 @@ export default function Tile ( {posX, posY, width, height} ) {
         height: `${height}px`, 
         backgroundSize: `${width}px ${height}px`,
         backgroundRepeat: 'no-repeat',
-        scale: 0,
+        opacity: 0,
+        scale: 0.8
       }}>
     </motion.div>
   )}

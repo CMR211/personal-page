@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router'
 
 export default function Contact (props) {
 
-  // useNavigate hook form react-router to allow navigating with swipes
-  const navigate = useNavigate()
+
 
   // touch hook to allow navigating the site with swipes
   const [touchPosX, setTouchPosX] = React.useState(null)
@@ -29,17 +28,13 @@ export default function Contact (props) {
   }
 
   function next() {
-    navigate('/')
+    props.changeCurrentPage(0)
   }
 
   function prev() {
-    navigate('/portfolio')
+    props.changeCurrentPage(2)
   }
 
-  const topGridStyle = {
-    gridColumn: `${getGridPosition(props.config, 'small', 'colStart')} / ${getGridPosition(props.config, 'small', 'colEnd')}`,
-    gridRow: `${getGridPosition(props.config, 'small', 'rowStart')} / ${getGridPosition(props.config, 'small', 'rowEnd')}`,
-  }
 
   const contactitems = [
     {
@@ -65,12 +60,12 @@ export default function Contact (props) {
   ]
 
   const mappedContactItems = contactitems.map((item, index) => { 
-    return (
+    return ( <>
       <div className='contact__item' key={index}>
         <i className={`${item.icon} contact__icon`}></i>
         <a className='contact__link' href={item.link}>{item.name}</a>
       </div>
-    )
+      </> )
   })
 
   return (
@@ -81,13 +76,14 @@ export default function Contact (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='contact glass'  
-        style={topGridStyle}
+
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}>
 
           <h1 className='contact__title'>Contact</h1>
-
-          {mappedContactItems}
+          <div className='contact__container'>
+            {mappedContactItems}
+          </div>
 
     </motion.div>
   )

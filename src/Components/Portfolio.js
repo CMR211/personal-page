@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router'
 
 export default function Portfolio (props) {
 
-  // useNavigate hook form react-router to allow navigating with swipes
-  const navigate = useNavigate()
+
 
   // touch hook to allow navigating the site with swipes
   const [touchPosX, setTouchPosX] = React.useState(null)
@@ -29,16 +28,11 @@ export default function Portfolio (props) {
   }
 
   function next() {
-    navigate('/contact')
+    props.changeCurrentPage(3)
   }
 
   function prev() {
-    navigate('/about')
-  }
-
-  const topGridStyle = {
-    gridColumn: `${getGridPosition(props.config, 'big', 'colStart')} / ${getGridPosition(props.config, 'big', 'colEnd')}`,
-    gridRow: `${getGridPosition(props.config, 'big', 'rowStart')} / ${getGridPosition(props.config, 'big', 'rowEnd')}`,
+    props.changeCurrentPage(1)
   }
 
   const [currentProject, setCurrentProject] = React.useState(0)
@@ -61,15 +55,15 @@ export default function Portfolio (props) {
   const projects = [
     {
       name: 'Space tourism website',
-      desc: 'Design inspired by frontendmentor.io challange, bilingual website, made with react.',
+      desc: 'Design inspired by frontendmentor.io challange. Bilingual website, made with react.',
       live: 'https://cmr211-fem-space-tourism-website.netlify.app/',
-      pic: './assets/projects/space-tourism-website.png'
+      pic: '../assets/projects/space-tourism-website.png'
     },
     {
       name: 'Flags app',
       desc: 'Design inspired by frontendmentor.io challange. Simple react web app fetching countries data from Restcountries API.',
       live: 'https://cmr211-fem-flags-app.netlify.app/',
-      pic: './assets/projects/flags-app.png'
+      pic: '../assets/projects/flags-app.png'
     }
   ]
 
@@ -100,7 +94,7 @@ export default function Portfolio (props) {
         initial={animation[2]}
         exit={animation[3]}
         className='portfolio glass'  
-        style={topGridStyle}
+
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}>
         
@@ -122,11 +116,17 @@ export default function Portfolio (props) {
           exit={portfolioAnimation[3]} 
           className='portfolio__project' 
           key={currentProject}>
+
             <div className='project__info'>
               <p className='project__desc'>{projects[currentProject].desc}</p>
-              <a className='project__link'href={projects[currentProject].live}>{`Live site preview at netlify`}</a>
+              <a className='project__link'href={projects[currentProject].live}>
+                <i className="fas fa-external-link-alt"></i>
+                {` Click to see live preview at netlify.`}
+              </a>
             </div>
-            <img id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic} alt={projects[currentProject].name} ></img>
+
+            <img key={`pic${currentProject}`} id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic} alt={projects[currentProject].name} ></img>
+
           </motion.div>
         </AnimatePresence>
       </motion.div>

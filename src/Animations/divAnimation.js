@@ -7,7 +7,7 @@ export const animation = [
   }, 
 
   { // transition settings
-    duration: 0.5, 
+    duration: 0.3, 
     ease: 'easeInOut',
   }, 
 
@@ -17,8 +17,8 @@ export const animation = [
     opacity: 0,
   }, 
   { // exit (not-working)
-    scale: 0.9, 
-    y: -100,
+    // scale: 0.9, 
+    y: -20,
     opacity: 0,
   } 
 ]

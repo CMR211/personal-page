@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgb(56, 56, 56);
+  --accent: hsl(0deg 90% 70%);
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+a:focus,a:visited,a:active{
+  outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'helvetica', 'arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*::selection {
+  background-color: var(--accent);
+}
