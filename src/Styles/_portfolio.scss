@@ -152,4 +152,27 @@
   }
 }
 
+.portfolio__btn-container {
+  display: none;
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+  .portfolio__btn-container {
+    display: block;
+    position: absolute;
+    bottom: -5.5rem;
+    right: 0;
+  }
+  .portfolio__next-btn {
+    @include next-btn;
+    opacity: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    &:hover,
+    &:focus {
+      transform: scale(1.05) translateX(-5px);
+    }
+  }
+}
+
 

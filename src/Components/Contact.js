@@ -81,9 +81,35 @@ export default function Contact (props) {
         onTouchMove={handleTouchMove}>
 
           <h1 className='contact__title'>Contact</h1>
-          <div className='contact__container'>
-            {mappedContactItems}
+
+          <div className='contact__columns'>
+
+            <div className='contact__container'>
+              {mappedContactItems}
+            </div>
+
+            <div className='contact__form'>
+              <form name="contact" method="POST" data-netlify="true">
+                <div className='contact__form__item'>
+                  <label className='contact__form__label' for="name">Name:</label>
+                  <input autocomplete='hidden' className='contact__form__input' type="text" id="name" name="name" required/>
+                </div>
+                <div className='contact__form__item'>
+                  <label className='contact__form__label' for="email">Email:</label>
+                  <input autocomplete='hidden' className='contact__form__input' type="email" id="email" name="email" required />
+                </div>
+                <div className='contact__form__item'>
+                  <label className='contact__form__label' for="message">Let me know what you think: </label>
+                  <textarea className='contact__form__input' id="message" name="message" required ></textarea>
+                </div>
+                <div className='contact__form__item'>
+                  <button className='contact__form__button' type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+
           </div>
+          
 
     </motion.div>
   )

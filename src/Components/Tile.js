@@ -5,15 +5,12 @@ function getRandomValue(min, max) {
   return Math.floor( Math.random() * (max - min) + min )
 }
 
-export default function Tile ( {posX, posY, width, height} ) {
-
-  const tile = getRandomValue(1, 21)
+export default function Tile ( {posX, posY, width, height, rnd} ) {
 
   let bg
-  if (Math.random() > 0.01) {bg = `url(assets/pattern-${tile}.svg)`}
+  if (Math.random() > 0.01) {bg = `url(assets/pattern-${rnd}.svg)`}
   else {bg = `hsl(0deg 90% 80%)`}
   
-
   const animation = {
     animate: {
       opacity: 1,

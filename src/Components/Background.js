@@ -1,6 +1,9 @@
 import React from 'react'
 import Tile from './Tile.js'
 
+function getRandomValue(min, max) {
+  return Math.floor( Math.random() * (max - min) + min )
+}
 
 export default function Background () {
 
@@ -40,6 +43,7 @@ export default function Background () {
           posY={ j * config[3] } 
           width={ config[1] }
           height={ config[3] }
+          rnd={getRandomValue(1,21)}
           /> 
         )
       }

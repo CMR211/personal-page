@@ -127,6 +127,10 @@ export default function Portfolio (props) {
 
             <img key={`pic${currentProject}`} id='portfolio__pic' className='project__pic' onClick={() => toggleFullScreen()} src={projects[currentProject].pic} alt={projects[currentProject].name} ></img>
 
+            <div className='portfolio__btn-container'>
+              <button onClick={() => props.changeCurrentPage(3)} className='glass about__next-btn'> {'Contact me'} </button>
+            </div>
+
           </motion.div>
         </AnimatePresence>
       </motion.div>

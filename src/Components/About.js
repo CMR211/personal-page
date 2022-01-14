@@ -87,6 +87,9 @@ export default function About (props) {
               {mappedSkills}
             </div>
         </div>
+        <div className='about__btn-container'>
+          <button onClick={() => props.changeCurrentPage(2)} className='glass about__next-btn'> {'My portfolio'} </button>
+        </div>
       </motion.div>
   )
 }

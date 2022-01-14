@@ -10,6 +10,7 @@
 }
 
 .home {
+  position: relative;
   max-width: 50rem;
 
   & * {
@@ -50,24 +51,33 @@
   }
 
   &__next-btn {
-    margin: 5vh auto 0;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 3rem;
-    background-color: var(--accent);
-    opacity: 0.7;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    letter-spacing: -0.5px;
-    font-family: inherit;
-    align-self: center;
-    transition: 300ms ease-in-out;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px 2px rgba(100, 100, 100, 0.4);
+    @include next-btn
   }
 
   &__next-btn:hover,
   &__next-btn:focus {
     transform: scale(1.1);
     opacity: 1;
+  }
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+  .home__btn-container {
+    position: absolute;
+    margin: 0;
+    bottom: -5.5rem;
+    right: 0;
+    & .home__next-btn {
+      font-size: 1rem;
+      margin: 0;
+      margin-left: auto;
+      @include glass;
+      font-weight: 500;
+      opacity: 1;
+      &:hover,
+      &:focus {
+        transform: translateX(-5px) scale(1.05);
+      }
+    }
   }
 }

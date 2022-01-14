@@ -8,3 +8,19 @@ $navbarMarginBottom: 5vh;
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
   border-radius: 5px;
 }
+
+@mixin next-btn {
+  margin: 5vh auto 0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 3rem;
+  background-color: var(--accent);
+  opacity: 0.7;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  letter-spacing: -0.5px;
+  font-family: inherit;
+  align-self: center;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px 2px rgba(100, 100, 100, 0.4);
+}
